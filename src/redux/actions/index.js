@@ -1,3 +1,4 @@
 import SendCurrencyActions from './send-currency';
+import BalanceActions from './balance';
 
-export {SendCurrencyActions};
+export {BalanceActions, SendCurrencyActions};

@@ -26,9 +26,10 @@ function SendCurrencyScreen(props) {
     fastestFee,
     feesError,
     isLoading,
+    total,
     setAmount,
     setAddress,
-    total,
+    sendCurrency,
   } = props;
 
   if (isLoading) {
@@ -80,7 +81,7 @@ function SendCurrencyScreen(props) {
         disabled={
           !address.length || !amount.length || !!errorAddress || !!errorAmount
         }
-        onPress={() => {}}
+        onPress={sendCurrency}
       />
     </KeyboardAvoidingView>
   );
@@ -103,6 +104,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = disptach => ({
   setAddress: address => disptach(SendCurrencyActions.setAddress(address)),
   setAmount: amount => disptach(SendCurrencyActions.setAmount(amount)),
+  sendCurrency: () => disptach(SendCurrencyActions.send()),
   getFees: disptach(SendCurrencyActions.getFees()),
 });
 

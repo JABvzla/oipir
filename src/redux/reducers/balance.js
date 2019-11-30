@@ -11,7 +11,13 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCH_BALANCE': {
+    case 'BALANCE_SET': {
+      return {
+        ...state,
+        btc: action.payload.btc,
+      };
+    }
+    case 'BALANCE_GET': {
       return {
         isLoading: false,
         error: false,

@@ -54,6 +54,24 @@ export default (state = initialState, action) => {
         feesError: true,
       };
     }
+    case 'SEND_CURRENCY_START': {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case 'SEND_CURRENCY_SUCCESS': {
+      return {
+        ...initialState,
+      };
+    }
+    case 'SEND_CURRENCY_FAIL': {
+      return {
+        ...state,
+        isLoading: false,
+        error: true,
+      };
+    }
     default: {
       return state;
     }

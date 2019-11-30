@@ -63,6 +63,24 @@ function getFees() {
   };
 }
 
+function send() {
+  return (dispatch, getState) => {
+    const {balance, sendCurrency} = getState();
+    const newValue = balance.btc - sendCurrency.total;
+
+    dispatch({type: 'SEND_CURRENCY_START'});
+
+    if (!newValue) {
+      dispatch({type: 'SEND_CURRENCY_GET_FEES_FAIL'});
+    }
+
+    setTimeout(() => {
+      dispatch({type: 'BALANCE_SET', payload: {btc: newValue.toFixed(8)}});
+      dispatch({type: 'SEND_CURRENCY_SUCCESS'});
+    }, 5000);
+  };
+}
+
 // Helper
 function satoshiToBtc(n) {
   return '0.00000000'.substring(0, 10 - n.toString().length) + n;
@@ -86,5 +104,5 @@ function validateAmount(amount, btc, total) {
   }
 }
 
-const SendCurrencyActions = {setAddress, setAmount, getFees};
+const SendCurrencyActions = {setAddress, setAmount, getFees, send};
 export default SendCurrencyActions;
