@@ -1,4 +1,18 @@
+import {StyleSheet} from 'react-native';
 import Fonts from './fonts';
 import Colors from './colors';
+import Sizes from './sizes';
 
-export {Fonts, Colors};
+const GlobalStyles = StyleSheet.create({
+  screenWrapper: {
+    margin: Sizes.M,
+    flex: 1,
+  },
+  titleScreen: {
+    ...Fonts('XXL', 'GrayDark', 'Bold'),
+    textAlign: 'center',
+    marginBottom: Sizes.M,
+  },
+});
+
+export {Fonts, Colors, Sizes, GlobalStyles};

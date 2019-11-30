@@ -1,14 +1,11 @@
 import React from 'react';
-import {View, Button} from 'react-native';
+import {TouchableOpacity, View, Text} from 'react-native';
 import styles from './styles';
-import {Colors} from '@theme';
 
 export default props => (
-  <View style={styles.wrapper}>
-    <Button
-      title={props.title}
-      color={Colors.PurpleSemiDark}
-      onPress={props.onPress}
-    />
+  <View style={props.wrapperStyle}>
+    <TouchableOpacity style={styles.wrapper} onPress={props.onPress}>
+      <Text style={styles.label}>{props.title}</Text>
+    </TouchableOpacity>
   </View>
 );

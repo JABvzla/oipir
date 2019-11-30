@@ -1,11 +1,20 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {ScrollView} from 'react-native';
+import TransactionCard from '@transaction-card';
 
 export default () => (
-  <View>
-    <Text>BTC</Text>
-    <Text>1.5</Text>
-    <Text>ARS: 1500000</Text>
-    <Text>ARS: 1500000</Text>
-  </View>
+  <ScrollView>
+    <TransactionCard />
+    <TransactionCard />
+    <TransactionCard />
+    <TransactionCard />
+    <TransactionCard />
+    <TransactionCard />
+    <TransactionCard />
+    <TransactionCard />
+    <TransactionCard />
+    <TransactionCard />
+    <TransactionCard />
+    <TransactionCard />
+  </ScrollView>
 );

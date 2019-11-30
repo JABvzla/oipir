@@ -1,14 +1,6 @@
-const defaultProps = {
-  paddingLeft: 0,
-};
-
 const FontColors = {
   Black: '#000000',
   White: '#FFFFFF',
-  Blue: '#0F8DEB',
-  Cyan: '#1CCAD8',
-  Purple: '#6D6C9D',
-  Red: '#FF4444',
   // Grays.
   GraySuperLight: '#D6D9E1',
   GrayLight: '#AAAFC1',
@@ -41,7 +33,6 @@ const FontsWeight = {
 
 function Fonts(size, color, weight = 'Regular') {
   return {
-    ...defaultProps,
     fontSize: FontSizes[size],
     color: FontColors[color],
     fontWeight: FontsWeight[weight],

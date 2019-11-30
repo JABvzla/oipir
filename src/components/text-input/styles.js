@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Fonts} from '@theme';
+import {Fonts, Colors, Sizes} from '@theme';
 
 export default StyleSheet.create({
   wrapper: {
@@ -12,6 +12,15 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   labelText: {
-    ...Fonts('M', 'GraySemiLigth'),
+    ...Fonts('S', 'GraySemiLigth'),
+  },
+  textInput: {
+    ...Fonts('M', 'GraySuperDark'),
+    borderColor: Colors.PurpleSemiDark,
+    borderWidth: Sizes.XXS,
+    borderRadius: Sizes.XS,
+    paddingVertical: Sizes.XS,
+    paddingLeft: Sizes.S,
+    marginBottom: Sizes.XS,
   },
 });

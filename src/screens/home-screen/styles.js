@@ -1,11 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {Fonts} from '@theme';
+import {Fonts, Sizes} from '@theme';
 
 export default StyleSheet.create({
   container: {
     ...Fonts('XXL', 'GrayDark', 'Bold'),
     textAlign: 'center',
-    flexGrow: 1,
   },
   primaryText: {
     ...Fonts('XXL', 'GrayDark', 'Bold'),
@@ -17,9 +16,5 @@ export default StyleSheet.create({
   feeLabel: {
     ...Fonts('M', 'GraySemiLigth'),
     textAlign: 'center',
-  },
-  sendButtonWrapper: {
-    marginTop: 'auto',
-    alignItems: 'center',
   },
 });

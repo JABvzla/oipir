@@ -1,25 +1,23 @@
 import React from 'react';
-import {SafeAreaView, View, ScrollView} from 'react-native';
-import CurrentBalance from '@current-balance';
-import CransactionHistory from '@transaction-history';
-import Button from '@button';
+import {View, Text} from 'react-native';
 
-export default props => (
-  <SafeAreaView>
-    <View>
-      <CurrentBalance />
+import Button from '@button';
+import {GlobalStyles} from '@theme';
+import TransactionHistory from '@transaction-history';
+
+export default function(props) {
+  return (
+    <View style={GlobalStyles.screenWrapper}>
+      <Button
+        wrapperStyle={{
+          width: '100%',
+          alignItems: 'center',
+        }}
+        onPress={() => props.navigation.navigate('SendCurrency')}
+        title="Enviar"
+      />
+      <Text style={GlobalStyles.titleScreen}>Transacciones</Text>
+      <TransactionHistory />
     </View>
-    <Button
-      title="Transferir Moneda"
-      onPress={() => props.navigation.navigate('SendCurrency')}
-    />
-    <ScrollView>
-      <CransactionHistory />
-      <CransactionHistory />
-      <CransactionHistory />
-      <CransactionHistory />
-      <CransactionHistory />
-      <CransactionHistory />
-    </ScrollView>
-  </SafeAreaView>
-);
+  );
+}
