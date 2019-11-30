@@ -6,6 +6,7 @@ import Sizes from './sizes';
 const GlobalStyles = StyleSheet.create({
   screenWrapper: {
     margin: Sizes.M,
+    marginTop: Sizes.L,
     flex: 1,
   },
   titleScreen: {

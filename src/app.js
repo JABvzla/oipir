@@ -1,32 +1,14 @@
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+import React from 'react';
+import {Provider} from 'react-redux';
+import store from '@redux/store';
+import AppRoutes from './routes';
 
-// Screens
-import SendCurrencyScreen from '@send-currency-screen';
-import HomeScreen from '@home-screen';
-import CurrentBalance from '@current-balance';
+const newStore = store({});
 
-const MainNavigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    SendCurrency: SendCurrencyScreen,
-  },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        height: 150,
-        borderBottomWidth: 1,
-        borderColor: '#000',
-      },
-      headerLeft: null,
-      headerRight: null,
-      headerBackgroundTransitionPreset: 'translate',
-      headerTitle: CurrentBalance,
-    },
-    headerMode: 'float',
-  },
+const AppRedux = () => (
+  <Provider store={newStore}>
+    <AppRoutes />
+  </Provider>
 );
 
-const App = createAppContainer(MainNavigator);
-
-export default App;
+export default AppRedux;

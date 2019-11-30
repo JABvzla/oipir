@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Fonts} from '@theme';
+import {Fonts, Sizes} from '@theme';
 
 export default StyleSheet.create({
   primaryText: {
@@ -9,5 +9,8 @@ export default StyleSheet.create({
   secondaryText: {
     ...Fonts('M', 'GraySemiLigth'),
     textAlign: 'center',
+  },
+  wrapper: {
+    height: 135,
   },
 });
