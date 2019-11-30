@@ -20,7 +20,13 @@ export default StyleSheet.create({
     borderWidth: Sizes.XXS,
     borderRadius: Sizes.XS,
     paddingVertical: Sizes.XS,
-    paddingLeft: Sizes.S,
-    marginBottom: Sizes.XS,
+    paddingHorizontal: Sizes.S,
+  },
+  // Error
+  labelError: {
+    ...Fonts('XS', 'Danger'),
+  },
+  errorInput: {
+    borderColor: Colors.Danger,
   },
 });

@@ -10,7 +10,14 @@ export default StyleSheet.create({
     width: 200,
     backgroundColor: Colors.Primary,
   },
+  disabled: {
+    backgroundColor: Colors.Disabled,
+  },
   label: {
     ...Fonts('S', 'White', 'Bold'),
+  },
+  center: {
+    width: '100%',
+    alignItems: 'center',
   },
 });

@@ -11,10 +11,7 @@ export default function(props) {
     <View style={GlobalStyles.screenWrapper}>
       <CurrentBalance />
       <Button
-        wrapperStyle={{
-          width: '100%',
-          alignItems: 'center',
-        }}
+        center
         onPress={() => props.navigation.navigate('SendCurrency')}
         title="Enviar"
       />

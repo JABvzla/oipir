@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Fonts, Sizes} from '@theme';
+import {Fonts} from '@theme';
 
 export default StyleSheet.create({
   primaryText: {
