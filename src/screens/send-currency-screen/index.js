@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {connect} from 'react-redux';
+import {StackActions, NavigationActions} from 'react-navigation';
 import style from './styles';
 
 import {SendCurrencyActions, TransactionsActions} from '@redux/actions';
@@ -26,6 +27,7 @@ function SendCurrencyScreen(props) {
     errorAmount,
     fastestFee,
     feesError,
+    error,
     isLoading,
     total,
     setAmount,
@@ -39,10 +41,20 @@ function SendCurrencyScreen(props) {
     return <ActivityIndicator style={GlobalStyles.screenWrapper} />;
   }
 
-  if (success) {
+  if (success || error) {
     props.reset();
     getTransactions();
-    return props.navigation.navigate('Home');
+
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({routeName: 'Home'}),
+        NavigationActions.navigate({routeName: 'SendResult'}),
+      ],
+    });
+    props.navigation.dispatch(resetAction);
+
+    return props.navigation.navigate('SendResult', {success});
   }
 
   if (feesError) {
@@ -101,6 +113,7 @@ const mapStateToProps = state => ({
   btc: state.balance.btc,
   address: state.sendCurrency.address,
   amount: state.sendCurrency.amount,
+  error: state.sendCurrency.error,
   errorAddress: state.sendCurrency.errorAddress,
   errorAmount: state.sendCurrency.errorAmount,
   fastestFee: state.sendCurrency.fees.fastestFee,
