@@ -13,6 +13,7 @@ export default props => (
       <Text style={styles.dateText}>{props.date}</Text>
     </View>
     <Text style={styles.secondaryText}>ARS: 1500000</Text>
-    <Text style={styles.addressText}>destino: {props.btcAddress}</Text>
+    <Text style={styles.addressText}>destino</Text>
+    <Text style={styles.addressText}> {props.btcAddress}</Text>
   </View>
 );

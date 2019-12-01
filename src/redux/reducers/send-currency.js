@@ -11,7 +11,7 @@ const initialState = {
   total: '0',
   feesError: false,
   isLoading: false,
-  sucess: false,
+  success: false,
   error: false,
 };
 
@@ -63,6 +63,7 @@ export default (state = initialState, action) => {
     case 'SEND_CURRENCY_SUCCESS': {
       return {
         ...initialState,
+        success: true,
       };
     }
     case 'SEND_CURRENCY_FAIL': {
@@ -70,6 +71,11 @@ export default (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: true,
+      };
+    }
+    case 'SEND_CURRENCY_RESET': {
+      return {
+        ...initialState,
       };
     }
     default: {

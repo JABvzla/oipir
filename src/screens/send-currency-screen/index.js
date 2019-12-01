@@ -30,10 +30,16 @@ function SendCurrencyScreen(props) {
     setAmount,
     setAddress,
     sendCurrency,
+    success,
   } = props;
 
   if (isLoading) {
     return <ActivityIndicator style={GlobalStyles.screenWrapper} />;
+  }
+
+  if (success) {
+    props.reset();
+    return props.navigation.navigate('Home');
   }
 
   if (feesError) {
@@ -89,6 +95,7 @@ function SendCurrencyScreen(props) {
 
 const mapStateToProps = state => ({
   isLoading: state.sendCurrency.isLoading,
+  success: state.sendCurrency.success,
   btc: state.balance.btc,
   address: state.sendCurrency.address,
   amount: state.sendCurrency.amount,
@@ -105,6 +112,7 @@ const mapDispatchToProps = disptach => ({
   setAddress: address => disptach(SendCurrencyActions.setAddress(address)),
   setAmount: amount => disptach(SendCurrencyActions.setAmount(amount)),
   sendCurrency: () => disptach(SendCurrencyActions.send()),
+  reset: () => disptach(SendCurrencyActions.reset()),
   getFees: disptach(SendCurrencyActions.getFees()),
 });
 

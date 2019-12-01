@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {getFormatedDate, satoshiToBtc, getRandomHash} from '@helpers';
 
 function setAddress(address) {
   return {
@@ -63,6 +64,10 @@ function getFees() {
   };
 }
 
+function reset() {
+  return {type: 'SEND_CURRENCY_RESET'};
+}
+
 function send() {
   return (dispatch, getState) => {
     const {balance, sendCurrency} = getState();
@@ -70,24 +75,44 @@ function send() {
 
     dispatch({type: 'SEND_CURRENCY_START'});
 
-    if (!newValue) {
-      dispatch({type: 'SEND_CURRENCY_GET_FEES_FAIL'});
+    if (!newValue || isNaN(sendCurrency.total)) {
+      dispatch({
+        type: 'TRANSACTIONS_CREATE',
+        payload: {
+          transaction: {
+            id: getRandomHash(),
+            btc: sendCurrency.total,
+            date: getFormatedDate(),
+            btcAddress: sendCurrency.address,
+            status: 'failed',
+          },
+        },
+      });
+
+      return dispatch({type: 'SEND_CURRENCY_GET_FEES_FAIL'});
     }
 
     setTimeout(() => {
       dispatch({type: 'BALANCE_SET', payload: {btc: newValue.toFixed(8)}});
+
+      dispatch({
+        type: 'TRANSACTIONS_CREATE',
+        payload: {
+          transaction: {
+            id: getRandomHash(),
+            btc: sendCurrency.total,
+            date: getFormatedDate(),
+            btcAddress: sendCurrency.address,
+            status: 'success',
+          },
+        },
+      });
       dispatch({type: 'SEND_CURRENCY_SUCCESS'});
-    }, 5000);
+    }, 3000);
   };
 }
 
-// Helper
-function satoshiToBtc(n) {
-  return '0.00000000'.substring(0, 10 - n.toString().length) + n;
-}
-
 // Validations
-
 function validateAddress(address) {
   if (address.length && !/^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$/.test(address)) {
     return 'Dirección de bitcoin Invalida';
@@ -104,5 +129,5 @@ function validateAmount(amount, btc, total) {
   }
 }
 
-const SendCurrencyActions = {setAddress, setAmount, getFees, send};
+const SendCurrencyActions = {setAddress, setAmount, getFees, send, reset};
 export default SendCurrencyActions;

@@ -8,6 +8,8 @@ export default StyleSheet.create({
   },
   addressText: {
     ...Fonts('XS', 'Black'),
+    width: '100%',
+    textAlign: 'center',
   },
   btcText: {
     ...Fonts('L', 'GrayDark', 'Bold'),
