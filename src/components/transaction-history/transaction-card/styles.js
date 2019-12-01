@@ -4,25 +4,25 @@ import {Sizes} from '@theme';
 
 export default StyleSheet.create({
   idText: {
-    ...Fonts('XXS', 'GrayDark', 'Medium'),
+    ...Fonts('XXS', 'GrayLight', 'Medium'),
   },
   addressText: {
-    ...Fonts('XS', 'Black'),
+    ...Fonts('XS', 'GrayLight'),
     width: '100%',
     textAlign: 'center',
   },
   btcText: {
-    ...Fonts('L', 'GrayDark', 'Bold'),
+    ...Fonts('L', 'White', 'Bold'),
   },
   muted: {
     height: 135,
   },
   secondaryText: {
-    ...Fonts('XS', 'GrayDark', 'Bold'),
+    ...Fonts('XS', 'GraySuperLight', 'Bold'),
   },
   dateText: {
     marginTop: 5,
-    ...Fonts('M', 'GrayDark', 'Medium'),
+    ...Fonts('M', 'GrayLight', 'Medium'),
   },
   row: {
     flex: 1,
@@ -30,11 +30,11 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
   card: {
-    borderBottomWidth: 1,
     paddingVertical: Sizes.M,
     paddingHorizontal: Sizes.M,
+    backgroundColor: '#6D6D91',
   },
-  firstCard: {
-    borderTopWidth: 1,
+  oddCard: {
+    backgroundColor: '#606080',
   },
 });

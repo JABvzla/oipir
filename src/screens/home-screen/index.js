@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, ActivityIndicator} from 'react-native';
+import {View, ActivityIndicator} from 'react-native';
 import {connect} from 'react-redux';
 
 import {BalanceActions} from '@redux/actions';
@@ -8,7 +8,6 @@ import {GlobalStyles} from '@theme';
 import TransactionHistory from '@transaction-history';
 import CurrentBalance from '@current-balance';
 import ErrorConnection from '@error-connection';
-import styles from './styles';
 
 function HomeScreen(props) {
   const {isLoading, error} = props;
@@ -20,12 +19,12 @@ function HomeScreen(props) {
   }
 
   if (isLoading) {
-    return <ActivityIndicator style={styles.wrapper} />;
+    return <ActivityIndicator style={GlobalStyles.screenWrapper} />;
   }
 
   return (
-    <View style={styles.wrapper}>
-      <View style={[GlobalStyles.screenWrapper, styles.container]}>
+    <View style={GlobalStyles.screenWrapper}>
+      <View style={GlobalStyles.headerContainer}>
         <CurrentBalance />
         <Button
           center
@@ -33,7 +32,6 @@ function HomeScreen(props) {
           title="Enviar"
         />
       </View>
-      <Text style={GlobalStyles.titleScreen}>Transacciones</Text>
       <TransactionHistory />
     </View>
   );

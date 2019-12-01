@@ -1,7 +1,9 @@
 const FontColors = {
   Black: '#000000',
   White: '#FFFFFF',
-  Danger: '#F00',
+  Danger: '#FFAAAA',
+  WhiteLight: '#EEE',
+  Primary: '#AAA',
   // Grays.
   GraySuperLight: '#D6D9E1',
   GrayLight: '#AAAFC1',

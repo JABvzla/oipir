@@ -13,6 +13,7 @@ export default props => {
   setTimeout(() => {
     props.navigation.navigate('Home');
   }, 3000);
+
   return (
     <View style={[styles.wrapper, success && styles.successWrapper]}>
       <Text style={[GlobalStyles.titleScreen, styles.text]}>{message}</Text>

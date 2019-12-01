@@ -8,13 +8,13 @@ export default StyleSheet.create({
     padding: Sizes.MS,
     borderRadius: 5,
     width: 200,
-    backgroundColor: Colors.Primary,
+    backgroundColor: '#fff',
   },
   disabled: {
     backgroundColor: Colors.Disabled,
   },
   label: {
-    ...Fonts('S', 'White', 'Bold'),
+    ...Fonts('S', 'GrayDark', 'Bold'),
   },
   center: {
     width: '100%',

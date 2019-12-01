@@ -3,7 +3,7 @@ const Colors = {
   White: '#fff',
   Primary: '#2B2A48',
   Secondary: '#1D1C34',
-  Disabled: '#CCCC',
+  Disabled: '#999',
   Danger: '#FF0000',
   Blue: '#0F8DEB',
   Cyan: '#1CCAD8',

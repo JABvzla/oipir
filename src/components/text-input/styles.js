@@ -4,18 +4,18 @@ import {Fonts, Colors, Sizes} from '@theme';
 export default StyleSheet.create({
   wrapper: {
     padding: 20,
-    ...Fonts('XXL', 'GrayDark', 'Bold'),
+    ...Fonts('XXL', 'GraySuperLight', 'Bold'),
     textAlign: 'center',
   },
   primaryText: {
-    ...Fonts('XXL', 'GrayDark', 'Bold'),
+    ...Fonts('XXL', 'GraySuperLight', 'Bold'),
     textAlign: 'center',
   },
   labelText: {
-    ...Fonts('S', 'GraySemiLigth'),
+    ...Fonts('S', 'GrayLight'),
   },
   textInput: {
-    ...Fonts('M', 'GraySuperDark'),
+    ...Fonts('M', 'White'),
     borderColor: Colors.PurpleSemiDark,
     borderWidth: Sizes.XXS,
     borderRadius: Sizes.XS,

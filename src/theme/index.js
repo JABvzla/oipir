@@ -5,14 +5,21 @@ import Sizes from './sizes';
 
 const GlobalStyles = StyleSheet.create({
   screenWrapper: {
+    flex: 1,
+    justifyContent: 'space-around',
+    backgroundColor: '#334',
+  },
+  headerContainer: {
+    flex: 0,
+    justifyContent: 'space-around',
     margin: Sizes.M,
     marginTop: Sizes.L,
-    flex: 1,
   },
   titleScreen: {
-    ...Fonts('XXL', 'GrayDark', 'Bold'),
+    ...Fonts('XL', 'White', 'Bold'),
     textAlign: 'center',
-    marginBottom: Sizes.M,
+    paddingVertical: Sizes.M,
+    backgroundColor: '#262633',
   },
 });
 

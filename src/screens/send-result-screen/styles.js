@@ -13,6 +13,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.Success,
   },
   text: {
+    backgroundColor: 'transparent',
     color: '#fff',
   },
 });

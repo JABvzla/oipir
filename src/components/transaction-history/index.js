@@ -12,7 +12,7 @@ function TransactionHistory(props) {
       {transactionsHistory.map((t, k) => (
         <TransactionCard
           key={k}
-          first={k === 0}
+          odd={k % 2 === 0}
           id={t.id}
           status={t.status}
           btcAddress={t.btcAddress}

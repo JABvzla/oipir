@@ -3,11 +3,11 @@ import {Fonts} from '@theme';
 
 export default StyleSheet.create({
   primaryText: {
-    ...Fonts('XXL', 'GrayDark', 'Bold'),
+    ...Fonts('XXL', 'WhiteLight', 'Bold'),
     textAlign: 'center',
   },
   secondaryText: {
-    ...Fonts('M', 'GraySemiLigth'),
+    ...Fonts('M', 'GraySuperLight'),
     textAlign: 'center',
   },
   wrapper: {

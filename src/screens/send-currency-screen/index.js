@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import {StackActions, NavigationActions} from 'react-navigation';
-import style from './styles';
+import styles from './styles';
 
 import {SendCurrencyActions, TransactionsActions} from '@redux/actions';
 import {GlobalStyles} from '@theme';
@@ -68,10 +68,10 @@ function SendCurrencyScreen(props) {
       style={GlobalStyles.screenWrapper}
       keyboardVerticalOffset={5}
       behavior={isIos ? 'padding' : ''}>
-      <CurrentBalance />
-      <View style={style.container}>
-        <Text style={GlobalStyles.titleScreen}>Enviar BTC</Text>
-
+      <View style={GlobalStyles.headerContainer}>
+        <CurrentBalance />
+      </View>
+      <View style={styles.container}>
         <TextInput
           labelText="Dirección Destinatario"
           error={!!errorAddress}
@@ -88,11 +88,11 @@ function SendCurrencyScreen(props) {
           onChangeText={setAmount}
           value={amount}
         />
-        <Text style={style.feeLabel}>Comisión en BTC: {fastestFee}</Text>
-        <Text style={style.feeLabel}>Total de la transacción: {total}</Text>
+        <Text style={styles.feeLabel}>Comisión en BTC: {fastestFee}</Text>
+        <Text style={styles.feeLabel}>Total de la transacción: {total}</Text>
       </View>
       <Button
-        wrapperStyle={style.sendButtonWrapper}
+        wrapperStyle={styles.sendButtonWrapper}
         title="Enviar"
         disabled={
           !address.length ||

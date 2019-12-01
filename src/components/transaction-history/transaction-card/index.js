@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 import styles from './styles';
 
 export default props => (
-  <View style={[styles.card, props.first && styles.firstCard]}>
+  <View style={[styles.card, props.odd && styles.oddCard]}>
     <View style={styles.row}>
       <Text style={styles.idText}>id: {props.id} </Text>
       <Text style={styles.idText}>estado: {props.status} </Text>
