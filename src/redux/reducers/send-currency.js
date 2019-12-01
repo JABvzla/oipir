@@ -51,7 +51,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        feesError: true,
+        error: true,
       };
     }
     case 'SEND_CURRENCY_START': {

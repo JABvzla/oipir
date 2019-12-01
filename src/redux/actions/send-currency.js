@@ -75,13 +75,13 @@ function send() {
 
     dispatch({type: 'SEND_CURRENCY_START'});
 
-    if (!newValue || isNaN(sendCurrency.total)) {
+    if (!newValue || isNaN(+sendCurrency.total)) {
       dispatch({
         type: 'TRANSACTIONS_CREATE',
         payload: {
           transaction: {
             id: getRandomHash(),
-            btc: sendCurrency.amount,
+            btc: +sendCurrency.amount,
             date: getFormatedDate(),
             btcAddress: sendCurrency.address,
             status: 'no exitosa',
@@ -100,7 +100,7 @@ function send() {
         payload: {
           transaction: {
             id: getRandomHash(),
-            btc: sendCurrency.amount,
+            btc: +sendCurrency.amount,
             date: getFormatedDate(),
             btcAddress: sendCurrency.address,
             status: 'exitosa',
@@ -123,7 +123,9 @@ function validateAmount(amount, btc, total) {
   if (!/[0-9]{1,2}([.][0-9]{1,2})?$/.test(amount)) {
     return 'Solo debe contener numeros';
   }
-
+  if (isNaN(+amount)) {
+    return 'El formato de numeros es invalido';
+  }
   if (total > btc) {
     return 'El monto sumado a la comision no puede superar el saldo actual';
   }
