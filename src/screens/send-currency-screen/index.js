@@ -9,11 +9,12 @@ import {
 import {connect} from 'react-redux';
 import style from './styles';
 
-import {SendCurrencyActions} from '@redux/actions';
+import {SendCurrencyActions, TransactionsActions} from '@redux/actions';
 import {GlobalStyles} from '@theme';
 import Button from '@button';
 import TextInput from '@text-input';
 import CurrentBalance from '@current-balance';
+import ErrorConnection from '@error-connection';
 
 const isIos = Platform.OS === 'ios';
 
@@ -31,6 +32,7 @@ function SendCurrencyScreen(props) {
     setAddress,
     sendCurrency,
     success,
+    getTransactions,
   } = props;
 
   if (isLoading) {
@@ -39,17 +41,13 @@ function SendCurrencyScreen(props) {
 
   if (success) {
     props.reset();
+    getTransactions();
     return props.navigation.navigate('Home');
   }
 
   if (feesError) {
     return (
-      <View style={GlobalStyles.screenWrapper}>
-        <Text>
-          Se ha producido un error Obteniendo la comisión de cambio, intente de
-          nuevo.
-        </Text>
-      </View>
+      <ErrorConnection description="No se pudo conectar con el servidor obteniendo la comisión de cambio." />
     );
   }
 
@@ -85,7 +83,11 @@ function SendCurrencyScreen(props) {
         wrapperStyle={style.sendButtonWrapper}
         title="Enviar"
         disabled={
-          !address.length || !amount.length || !!errorAddress || !!errorAmount
+          !address.length ||
+          !amount.length ||
+          !!errorAddress ||
+          !!errorAmount ||
+          !!feesError
         }
         onPress={sendCurrency}
       />
@@ -114,6 +116,7 @@ const mapDispatchToProps = disptach => ({
   sendCurrency: () => disptach(SendCurrencyActions.send()),
   reset: () => disptach(SendCurrencyActions.reset()),
   getFees: disptach(SendCurrencyActions.getFees()),
+  getTransactions: () => disptach(TransactionsActions.getTransactions()),
 });
 
 export default connect(

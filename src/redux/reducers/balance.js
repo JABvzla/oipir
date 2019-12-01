@@ -1,5 +1,5 @@
 const initialState = {
-  btc: 1.00041,
+  btc: 0,
   secondaryCurrency: {
     name: 'ARS',
     value: 0,

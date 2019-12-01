@@ -2,6 +2,7 @@ import React from 'react';
 import {ScrollView} from 'react-native';
 import TransactionCard from '@transaction-card';
 import {connect} from 'react-redux';
+import {TransactionsActions} from '@redux/actions';
 
 function TransactionHistory(props) {
   const {transactionsHistory} = props;
@@ -28,7 +29,9 @@ const mapStateToProps = state => ({
   secondaryValue: state.balance.secondaryCurrency.value,
 });
 
-const mapDispatchToProps = disptach => ({});
+const mapDispatchToProps = disptach => ({
+  getTransactions: disptach(TransactionsActions.getTransactions()),
+});
 
 export default connect(
   mapStateToProps,

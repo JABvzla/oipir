@@ -1,16 +1,10 @@
 import React from 'react';
-import {View, Text, ActivityIndicator} from 'react-native';
+import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
 import styles from './styles';
 
-import {BalanceActions} from '@redux/actions';
-
 function CurrentBalance(props) {
-  const {btc, secondaryName, secondaryValue, isLoading} = props;
-
-  if (isLoading) {
-    return <ActivityIndicator style={styles.wrapper} />;
-  }
+  const {btc, secondaryName, secondaryValue} = props;
 
   return (
     <View style={styles.wrapper}>
@@ -25,16 +19,8 @@ function CurrentBalance(props) {
 
 const mapStateToProps = state => ({
   btc: state.balance.btc,
-  isLoading: state.balance.isLoading,
   secondaryName: state.balance.secondaryCurrency.name,
   secondaryValue: state.balance.secondaryCurrency.value,
 });
 
-const mapDispatchToProps = disptach => ({
-  getBalance: disptach(BalanceActions.getBalance()),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(CurrentBalance);
+export default connect(mapStateToProps)(CurrentBalance);

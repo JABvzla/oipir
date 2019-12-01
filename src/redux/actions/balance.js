@@ -37,7 +37,6 @@ function getBalance() {
         });
       })
       .catch(e => {
-        console.warn(e);
         dispatch({
           type: 'BALANCE_GET_FAIL',
         });
@@ -56,7 +55,6 @@ async function getStorageBalance() {
     await AsyncStorage.setItem(STORAGE_BALANCE, value);
     return value;
   } catch (e) {
-    console.warn('error', e);
     return '0';
   }
 }

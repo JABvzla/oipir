@@ -1,6 +1,7 @@
 import axios from 'axios';
 import BalanceActions from './balance';
-import {getFormatedDate, satoshiToBtc, getRandomHash} from '@helpers';
+import TransactionsActions from './transactions';
+import {satoshiToBtc} from '@helpers';
 
 function setAddress(address) {
   return {
@@ -57,7 +58,6 @@ function getFees() {
         });
       })
       .catch(e => {
-        console.warn(e);
         dispatch({
           type: 'SEND_CURRENCY_GET_FEES_FAIL',
         });
@@ -77,39 +77,24 @@ function send() {
     dispatch({type: 'SEND_CURRENCY_START'});
 
     if (!newValue || isNaN(+sendCurrency.total)) {
-      dispatch({
-        type: 'TRANSACTIONS_CREATE',
-        payload: {
-          transaction: {
-            id: getRandomHash(),
-            btc: +sendCurrency.amount,
-            date: getFormatedDate(),
-            btcAddress: sendCurrency.address,
-            status: 'no exitosa',
-          },
-        },
-      });
+      TransactionsActions.createTransaction(
+        +sendCurrency.amount,
+        sendCurrency.address,
+        'no exitosa',
+      );
 
       return dispatch({type: 'SEND_CURRENCY_GET_FEES_FAIL'});
     }
 
-    setTimeout(() => {
-      dispatch(BalanceActions.setBalance(newValue.toFixed(8)));
+    dispatch(BalanceActions.setBalance(newValue.toFixed(8)));
 
-      dispatch({
-        type: 'TRANSACTIONS_CREATE',
-        payload: {
-          transaction: {
-            id: getRandomHash(),
-            btc: +sendCurrency.amount,
-            date: getFormatedDate(),
-            btcAddress: sendCurrency.address,
-            status: 'exitosa',
-          },
-        },
-      });
-      dispatch({type: 'SEND_CURRENCY_SUCCESS'});
-    }, 3000);
+    TransactionsActions.createTransaction(
+      +sendCurrency.amount,
+      sendCurrency.address,
+      'exitosa',
+    );
+
+    setTimeout(() => dispatch({type: 'SEND_CURRENCY_SUCCESS'}), 3000);
   };
 }
 
