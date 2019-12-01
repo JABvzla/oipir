@@ -10,11 +10,14 @@ import CurrentBalance from '@current-balance';
 import ErrorConnection from '@error-connection';
 
 function HomeScreen(props) {
-  const {isLoading, error} = props;
+  const {isLoading, error, getBalanceRefresh} = props;
 
   if (error) {
     return (
-      <ErrorConnection description="No se pudo conectar con el servidor" />
+      <ErrorConnection
+        description="No se pudo conectar con el servidor"
+        onRetry={getBalanceRefresh}
+      />
     );
   }
 
@@ -44,6 +47,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = disptach => ({
+  getBalanceRefresh: () => disptach(BalanceActions.getBalance()),
   getBalance: disptach(BalanceActions.getBalance()),
 });
 

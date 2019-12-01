@@ -35,7 +35,17 @@ function SendCurrencyScreen(props) {
     sendCurrency,
     success,
     getTransactions,
+    getFeesRefresh,
   } = props;
+
+  if (feesError) {
+    return (
+      <ErrorConnection
+        description="No se pudo conectar con el servidor obteniendo la comisión de cambio."
+        onRetry={getFeesRefresh}
+      />
+    );
+  }
 
   if (isLoading) {
     return <ActivityIndicator style={GlobalStyles.screenWrapper} />;
@@ -55,12 +65,6 @@ function SendCurrencyScreen(props) {
     props.navigation.dispatch(resetAction);
 
     return props.navigation.navigate('SendResult', {success});
-  }
-
-  if (feesError) {
-    return (
-      <ErrorConnection description="No se pudo conectar con el servidor obteniendo la comisión de cambio." />
-    );
   }
 
   return (
@@ -128,6 +132,7 @@ const mapDispatchToProps = disptach => ({
   setAmount: amount => disptach(SendCurrencyActions.setAmount(amount)),
   sendCurrency: () => disptach(SendCurrencyActions.send()),
   reset: () => disptach(SendCurrencyActions.reset()),
+  getFeesRefresh: () => disptach(SendCurrencyActions.getFees()),
   getFees: disptach(SendCurrencyActions.getFees()),
   getTransactions: () => disptach(TransactionsActions.getTransactions()),
 });
