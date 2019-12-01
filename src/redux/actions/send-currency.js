@@ -84,7 +84,7 @@ function send() {
             btc: sendCurrency.amount,
             date: getFormatedDate(),
             btcAddress: sendCurrency.address,
-            status: 'failed',
+            status: 'no exitosa',
           },
         },
       });
@@ -103,7 +103,7 @@ function send() {
             btc: sendCurrency.amount,
             date: getFormatedDate(),
             btcAddress: sendCurrency.address,
-            status: 'success',
+            status: 'exitosa',
           },
         },
       });
