@@ -81,7 +81,7 @@ function send() {
         payload: {
           transaction: {
             id: getRandomHash(),
-            btc: sendCurrency.total,
+            btc: sendCurrency.amount,
             date: getFormatedDate(),
             btcAddress: sendCurrency.address,
             status: 'failed',
@@ -100,7 +100,7 @@ function send() {
         payload: {
           transaction: {
             id: getRandomHash(),
-            btc: sendCurrency.total,
+            btc: sendCurrency.amount,
             date: getFormatedDate(),
             btcAddress: sendCurrency.address,
             status: 'success',

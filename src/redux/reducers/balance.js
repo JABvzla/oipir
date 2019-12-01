@@ -2,10 +2,9 @@ const initialState = {
   btc: 1.00041,
   secondaryCurrency: {
     name: 'ARS',
-    amount: 0,
+    value: 0,
   },
   isLoading: false,
-  sucess: false,
   error: false,
 };
 
@@ -17,11 +16,26 @@ export default (state = initialState, action) => {
         btc: action.payload.btc,
       };
     }
-    case 'BALANCE_GET': {
+    case 'BALANCE_GET_START': {
       return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case 'BALANCE_GET_SUCCESS': {
+      return {
+        ...state,
         isLoading: false,
         error: false,
-        balance: action.payload.balance,
+        btc: action.payload.btc,
+        secondaryCurrency: action.payload.secondaryCurrency,
+      };
+    }
+    case 'BALANCE_GET_FAIL': {
+      return {
+        ...state,
+        isLoading: false,
+        error: true,
       };
     }
     default: {

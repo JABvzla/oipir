@@ -16,6 +16,7 @@ function TransactionHistory(props) {
           status={t.status}
           btcAddress={t.btcAddress}
           btc={t.btc}
+          secondaryAmount={(t.btc * props.secondaryValue).toFixed(2)}
           date={t.date}
         />
       ))}
@@ -24,6 +25,7 @@ function TransactionHistory(props) {
 }
 const mapStateToProps = state => ({
   transactionsHistory: state.transactions.history,
+  secondaryValue: state.balance.secondaryCurrency.value,
 });
 
 const mapDispatchToProps = disptach => ({});
