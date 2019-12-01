@@ -5,6 +5,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ActivityIndicator,
+  ScrollView,
 } from 'react-native';
 import {connect} from 'react-redux';
 import {StackActions, NavigationActions} from 'react-navigation';
@@ -70,31 +71,33 @@ function SendCurrencyScreen(props) {
   return (
     <KeyboardAvoidingView
       style={GlobalStyles.screenWrapper}
-      keyboardVerticalOffset={5}
+      keyboardVerticalOffset={0}
       behavior={isIos ? 'padding' : ''}>
-      <View style={GlobalStyles.headerContainer}>
-        <CurrentBalance />
-      </View>
-      <View style={styles.container}>
-        <TextInput
-          labelText="Dirección Destinatario"
-          error={!!errorAddress}
-          errorMessage={errorAddress}
-          onChangeText={setAddress}
-          value={address}
-        />
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        <View style={GlobalStyles.headerContainer}>
+          <CurrentBalance />
+        </View>
+        <View style={styles.container}>
+          <TextInput
+            labelText="Dirección Destinatario"
+            error={!!errorAddress}
+            errorMessage={errorAddress}
+            onChangeText={setAddress}
+            value={address}
+          />
 
-        <TextInput
-          labelText="Monto"
-          keyboardType={'numeric'}
-          error={!!errorAmount}
-          errorMessage={errorAmount}
-          onChangeText={setAmount}
-          value={amount}
-        />
-        <Text style={styles.feeLabel}>Comisión en BTC: {fastestFee}</Text>
-        <Text style={styles.feeLabel}>Total de la transacción: {total}</Text>
-      </View>
+          <TextInput
+            labelText="Monto"
+            keyboardType={'numeric'}
+            error={!!errorAmount}
+            errorMessage={errorAmount}
+            onChangeText={setAmount}
+            value={amount}
+          />
+          <Text style={styles.feeLabel}>Comisión en BTC: {fastestFee}</Text>
+          <Text style={styles.feeLabel}>Total de la transacción: {total}</Text>
+        </View>
+      </ScrollView>
       <Button
         wrapperStyle={styles.sendButtonWrapper}
         title="Enviar"
@@ -137,7 +140,4 @@ const mapDispatchToProps = disptach => ({
   getTransactions: () => disptach(TransactionsActions.getTransactions()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SendCurrencyScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SendCurrencyScreen);

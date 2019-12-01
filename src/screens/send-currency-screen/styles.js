@@ -20,6 +20,9 @@ export default StyleSheet.create({
     ...Fonts('M', 'GraySuperLight'),
     textAlign: 'center',
   },
+  scrollView: {
+    flexGrow: 1,
+  },
   sendButtonWrapper: {
     marginTop: 'auto',
     alignItems: 'center',
