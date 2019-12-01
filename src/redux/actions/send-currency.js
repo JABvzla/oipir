@@ -1,4 +1,5 @@
 import axios from 'axios';
+import BalanceActions from './balance';
 import {getFormatedDate, satoshiToBtc, getRandomHash} from '@helpers';
 
 function setAddress(address) {
@@ -93,7 +94,7 @@ function send() {
     }
 
     setTimeout(() => {
-      dispatch({type: 'BALANCE_SET', payload: {btc: newValue.toFixed(8)}});
+      dispatch(BalanceActions.setBalance(newValue.toFixed(8)));
 
       dispatch({
         type: 'TRANSACTIONS_CREATE',
