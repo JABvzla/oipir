@@ -1,4 +1,8 @@
 import SendCurrency from './send-currency';
+import MockAsyncStorage from 'mock-async-storage';
+
+const mockAsnyc = new MockAsyncStorage();
+jest.mock('@react-native-community/async-storage', () => mockAsnyc);
 
 describe('SEND_CURRENCY_SET_ADDRESS', () => {
   test('When btc addres is correct should be not error', () => {
