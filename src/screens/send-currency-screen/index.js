@@ -140,4 +140,7 @@ const mapDispatchToProps = disptach => ({
   getTransactions: () => disptach(TransactionsActions.getTransactions()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SendCurrencyScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SendCurrencyScreen);
